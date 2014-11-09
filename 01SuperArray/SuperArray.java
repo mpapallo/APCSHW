@@ -96,7 +96,23 @@ public class SuperArray{
 	    return null;
 	}	    
     }
-
+    
+    public Object remove(int index){
+	if (inRange(index)){
+	    Object x = new Object();
+	    x = A[index];
+	    for (int i = index; i < size() - 1; i ++){
+		A[i] = A[i + 1];
+	    }
+	    A[size() - 1] = null;
+	    numElements --;
+	    return A[index];
+	}else{
+	    System.out.println("Index out of range");
+	    return null;
+	}
+    }
+    
     public static void main(String[]args){
 
 	SuperArray A = new SuperArray();
@@ -111,13 +127,16 @@ public class SuperArray{
 	
 	System.out.println(A.size());
 	
-	A.set(0, x);
+	System.out.println(A.set(0, x));
 	System.out.println(A);
 
 	A.set(5, y);
 	A.add(3, y);
 
 	A.add(y);
+	System.out.println(A);
+
+	System.out.println(A.remove(0));
 	System.out.println(A);
 
 	A.clear();
