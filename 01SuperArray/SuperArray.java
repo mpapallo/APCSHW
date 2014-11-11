@@ -105,6 +105,9 @@ public class SuperArray{
 	}
 	//	A[size() - 1] = null;
 	numElements --;
+	if (size() < (A.length / 4)){
+	    resize(A.length / 2);
+	}
 	return x;
     }
     
