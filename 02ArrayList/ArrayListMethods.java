@@ -1,6 +1,10 @@
 import java.util.*;
 public class ArrayListMethods{
 
+    /**
+     *Remove any consecutive duplicates in the ArrayList
+     *@param L The values which may contain duplicates
+     */
     public static void collapseDuplicates(ArrayList<Integer> L){
 	for (int i  = 0; i < L.size() - 1; i ++){
 	    if (L.get(i) == L.get(i + 1)){
@@ -10,6 +14,11 @@ public class ArrayListMethods{
 	}
     }
     
+    /**
+     *Change the order of the elements in the ArrayList to a random permutation <br>
+     *by removing a random element and then adding it to the end of the ArrayList
+     *@param L The values to be put in random order
+     */
     public static void randomize(ArrayList<Integer> L){
 	Random r = new Random();
 	for (int n = L.size(); n > 0; n --){
@@ -18,7 +27,12 @@ public class ArrayListMethods{
 	    L.remove(L.get(x));
 	}
     }
-	
+
+    /**
+     *Change the order of the elements in the ArrayList to a random permutation <br>
+     *by swapping each element with another element at a random index
+     *@param L The values to be put in random order
+     */
     public static void randomizeFaster(ArrayList<Integer> L){
 	Random r = new Random();
 	for (int n = 0; n < L.size(); n ++){
