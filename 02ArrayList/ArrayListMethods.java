@@ -11,14 +11,22 @@ public class ArrayListMethods{
     }
     
     public static void randomize(ArrayList<Integer> L){
+	Random r = new Random();
 	for (int n = L.size(); n > 0; n --){
-	    Random r = new Random();
 	    int x = r.nextInt(n);
 	    L.add(L.get(x));
 	    L.remove(L.get(x));
 	}
     }
-
+	
+    public static void randomizeFaster(ArrayList<Integer> L){
+	Random r = new Random();
+	for (int n = 0; n < L.size(); n ++){
+	    int x = r.nextInt(L.size());
+	    L.set(n, L.set(x, L.get(n)));
+	}
+    }
+	
     public static void main(String[]args){
 	ArrayList<Integer> A = new ArrayList<Integer>();
 	Integer x = new Integer(1);
@@ -40,7 +48,7 @@ public class ArrayListMethods{
 	    B.add(z);
 	}
 	System.out.println(B);
-	randomize(B);
+	randomizeFaster(B);
 	System.out.println(B);
 
     }
