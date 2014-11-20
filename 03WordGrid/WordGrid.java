@@ -54,18 +54,33 @@ public class WordGrid{
 	    }
 	}
     }
+    /*
+    public boolean wordFits(String word, int row, int col){
+	
+    }
+    */
 
     //CHANGE '_' TO ' ' LATER!!!!!!!!!!!!!!!!!!!
+    /**
+     *Attempts to add a given word to the specified position of the WordGrid.
+     *The word is added from left to right, if it fits on the WordGrid and
+     *has a corresponding letter to match any letters that it overlaps.
+     *@param word is the text to be added to the WordGrid.
+     *@param row is the vertical location of the beginning of the word.
+     *@param col is the horizontal location of the beginning of the word.
+     *@return true when the word is added successfully, or false when the word
+     *doesn't fit or overlaps letters that don't match.
+     */
     public boolean addWordHorizontal(String word, int row, int col){
 	int c = col;
 	for (int n = 0; n < word.length(); n ++){
 	    if (data[row][c] != '_' && data[row][c] != word.charAt(n)){
 		return false;
 	    }
-	    c ++;
+	    c ++;	    
 	}
 	c = col;
-        for (int n = 0; n < word.length(); n ++){
+	for (int n = 0; n < word.length(); n ++){
 	    data[row][c] = word.charAt(n);
 	    c ++;
 	}
