@@ -6,14 +6,14 @@ public class WordGrid{
      *Initializes the grid to the size specified and fill all of
      *the positions with spaces.
      *@param rows is the starting height of the WordGrid.
-     *@param cols si the starting width of the WordGrid.
+     *@param cols is the starting width of the WordGrid.
      */
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
 	clear();
     }
     public WordGrid(){
-	this(5, 5);
+	this(10, 10);
     }
     
     /**
@@ -38,75 +38,44 @@ public class WordGrid{
     private void clear(){
 	for (int y = 0; y < data.length; y ++){
 	    for (int x = 0; x < data[y].length; x ++){
-		data[y][x] = ' ';
-	    }
-	}
-    }
-
-    /**
-     *Sets all values in the WordGrid to underscores 
-     *for easier use in testing.
-     */
-    public void initialize(){
-	for (int y = 0; y < data.length; y ++){
-	    for (int x = 0; x < data[y].length; x ++){
 		data[y][x] = '_';
 	    }
 	}
     }
 
     //CHANGE '_' TO ' ' LATER!!!!!!!!!!!!!!!!!!!
-    public boolean addWordHorizontal(String word, int row, int col){
-	int c = col;
-	for (int n = 0; n < word.length(); n ++){
-	    if (data[row][c] != '_' && data[row][c] != word.charAt(n)){
-		return false;
-	    }
-	    c ++;
-	}
-	c = col;
-        for (int n = 0; n < word.length(); n ++){
-	    data[row][c] = word.charAt(n);
-	    c ++;
-	}
-	return true;
-    }
-
     
-    public boolean addWordVertical(String word, int row, int col){
-	int r = row;
-	for (int n = 0; n < word.length(); n ++){
-	    if (data[r][col] != '_' && data[r][col] != word.charAt(n)){
-		return false;
-	    }
-	    r ++;
-	}
-	r = row;
-	for (int n = 0; n < word.length(); n ++){
-	    data[r][col] = word.charAt(n);
-	    r ++;
-	}
-	return true;
-    }
-    
-    public boolean addWordDiagonal(String word, int row, int col){
+    public boolean addWord(String word, int row, int col, int x, int y){
+        int r = row;
 	int c = col;
-	int r = row;
 	for (int n = 0; n < word.length(); n ++){
 	    if (data[r][c] != '_' && data[r][c] != word.charAt(n)){
 		return false;
 	    }
-	    c ++;
-	    r ++;
+	    r += y;
+	    c += x;
 	}
-	c = col;
 	r = row;
+	c= col;
 	for (int n = 0; n < word.length(); n ++){
 	    data[r][c] = word.charAt(n);
-	    c ++;
-	    r ++;
+	    r += y;
+	    c += x;
 	}
 	return true;
     }
+
+    public boolean addWordE(String word, int row, int col){
+        return addWord(word, row, col, 1, 0);
+    }
+
     
+    public boolean addWordN(String word, int row, int col){
+	return addWord(word, row, col, 0, 1);
+    }
+    
+    public boolean addWordSE(String word, int row, int col){
+	return addWord(word, row, col, 1, 1);
+    }
+   
 }
