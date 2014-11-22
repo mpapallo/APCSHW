@@ -52,6 +52,8 @@ public class WordGrid{
      *@param word is the text to be added to the WordGrid.
      *@param row is the vertical location of the beginning of the word.
      *@param col is the horizontal location of the beginning of the word.
+     *@param x is an int from [-1, 1] that indicates the horizontal direction of the next letter in the word
+     *@param y is an int from [-1,1] that indicates the vertical direction of the next letter in the word
      *@return true when the word is added successfully, or false when the word
      *doesn't fit or overlaps letters that don't match.
      */
@@ -74,18 +76,33 @@ public class WordGrid{
 	}
 	return true;
     }
-
-    public boolean addWordE(String word, int row, int col){
-        return addWord(word, row, col, 1, 0);
-    }
-
-    
-    public boolean addWordN(String word, int row, int col){
-	return addWord(word, row, col, 0, 1);
-    }
-    
-    public boolean addWordSE(String word, int row, int col){
-	return addWord(word, row, col, 1, 1);
-    }
    
+    File wordBank = new File("words.txt");
+    Scanner in = new Scaner(wordBank);
+    Random r = new Random();
+
+    public void createPuzzle(){
+	while (in.hasNext()){
+	    String word = in.next();
+	    int dir = r.nextInt(8);
+	    if (dir == 0){
+	        addWord(word, row, col, 1, 0);
+	    }else if (dir == 1){
+		addWord(word, row, col, 0, 1);
+	    }else if (dir == 2){
+	        addWord(word, row, col, 1, 1);
+	    }else if (dir == 3){
+		addWord(word, row, col, 1, -1);
+	    }else if (dir == 4){
+		addWord(word, row, col, -1, 0);
+	    }else if (dir == 5){
+		addWord(word, row, col, 0, -1);
+	    }else if (dir == 6){
+		addWord(word, row, col, 1, -1);
+	    }else{
+		addWord(word, row, col, -1, -1);
+	    }
+	}
+    }
+
 }
