@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 public class WordGrid{
     private char[][] data;
     
@@ -78,30 +79,69 @@ public class WordGrid{
     }
    
     File wordBank = new File("words.txt");
-    Scanner in = new Scaner(wordBank);
+    Scanner in = new Scanner(wordBank);
     Random r = new Random();
 
     public void createPuzzle(){
 	while (in.hasNext()){
 	    String word = in.next();
-	    int dir = r.nextInt(8);
-	    if (dir == 0){
-	        addWord(word, row, col, 1, 0);
-	    }else if (dir == 1){
-		addWord(word, row, col, 0, 1);
-	    }else if (dir == 2){
-	        addWord(word, row, col, 1, 1);
-	    }else if (dir == 3){
-		addWord(word, row, col, 1, -1);
-	    }else if (dir == 4){
-		addWord(word, row, col, -1, 0);
-	    }else if (dir == 5){
-		addWord(word, row, col, 0, -1);
-	    }else if (dir == 6){
-		addWord(word, row, col, 1, -1);
-	    }else{
-		addWord(word, row, col, -1, -1);
+	    int attempts = 0;
+	    while(attempts < 5){
+		int dir = r.nextInt(8);
+		int row = r.nextInt(data.length);
+		int col = r.nextInt(data[0].length);
+		if (dir == 0){
+		    if (addWord(word, row, col, 1, 0)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 1){
+		    if (addWord(word, row, col, 0, 1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 2){
+		    if (addWord(word, row, col, 1, 1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 3){
+		    if (addWord(word, row, col, 1, -1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 4){
+		    if (addWord(word, row, col, -1, 0)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 5){
+		    if (addWord(word, row, col, 0, -1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else if (dir == 6){
+		    if (addWord(word, row, col, 1, -1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}else{
+		    if (addWord(word, row, col, -1, -1)){
+			attempts = 5;
+		    }else{
+			attempts += 1;
+		    }
+		}
 	    }
+
+	   
 	}
     }
 

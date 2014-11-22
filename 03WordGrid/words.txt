@@ -1,0 +1,13 @@
+catfish 
+zebra 
+lemur 
+giraffe 
+lizard 
+hippo 
+elephant 
+jaguar 
+monkey 
+goldfish 
+squirrel 
+chipmunk 
+opossum 
