@@ -81,10 +81,14 @@ public class WordGrid{
     File wordBank = new File("words.txt");
     Scanner in = new Scanner(wordBank);
     Random r = new Random();
-
+    ArrayList<String> words = new ArrayList<String>();
+    
     public void createPuzzle(){
-	while (in.hasNext()){
-	    String word = in.next();
+	while(in.hasNext()){
+	    words.add(in.next());
+	}
+	for (int x = 0; x < words.size(); x ++){
+	    String word = words.get(x);
 	    int attempts = 0;
 	    while(attempts < 5){
 		int dir = r.nextInt(8);
