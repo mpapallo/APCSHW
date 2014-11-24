@@ -110,5 +110,15 @@ public class WordGrid{
 	int y = rand.nextInt(3) - 1;
 	return (addWord(word, row, col, x, y));
     }
+
+    public boolean fillInleftovers(){
+	for (int y = 0; y < data.length; y ++){
+	    for (int x = 0; x < data[y].length; x ++){
+		if (data[y][x] == '_'){
+		    data[y][x] = (char)('a' + (char)(rand.nextInt('z' - 'a')));
+		}
+	    }
+	}
+    }
    
 }
