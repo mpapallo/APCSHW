@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 public class WordGrid{
     private char[][] data;
+    public ArrayList<String> wordsToFind;
     Random rand = new Random();
     
     /**
@@ -39,7 +40,7 @@ public class WordGrid{
     }
 
     /**
-     *Sets all values in the WordGrid to spaces.
+     *Sets all values in the WordGrid to underscores.
      */
     private void clear(){
 	for (int y = 0; y < data.length; y ++){
@@ -64,15 +65,18 @@ public class WordGrid{
     private boolean wordFits(String word, int row, int col, int x, int y){
 	if ((x == 0 && y == 0) ||
 	    row + y*word.length() > data.length ||
-	    col + x*word.length() > data[0].length){
+	    row + y*word.length() < 0 ||
+	    col + x*word.length() > data[0].length ||
+	    col + x*word.length() < 0){
 	    return false;
-	}
-	for (int n = 0; n < word.length(); n ++){
-	    if (data[row][col] != '_' && data[row][col] != word.charAt(n)){
-		return false;
+	}else{
+	    for (int n = 0; n < word.length(); n ++){
+		if (data[row][col] != '_' && data[row][col] != word.charAt(n)){
+		    return false;
+		}
+		row += y;
+		col += x;
 	    }
-	    row += y;
-	    col += x;
 	}
 	return true;
     }
@@ -97,6 +101,7 @@ public class WordGrid{
 		row += y;
 		col += x;
 	    }
+	    // wordsToFind.add(word);
 	    return true;
 	}else{
 	    return false;
@@ -111,7 +116,22 @@ public class WordGrid{
 	return (addWord(word, row, col, x, y));
     }
 
-    public boolean fillInleftovers(){
+    public void fillPuzzle(ArrayList<String> words){
+       
+	for (int x = 0; x < words.size(); x ++){
+	    String word = words.remove(rand.nextInt(words.size()));
+		int attempts = 10;
+		do{
+		    if (addWordRandomly(word)){
+			attempts = 0;
+		    }else{
+			attempts -= 1;
+		    }
+		}while(attempts > 0);
+	    }
+    }
+
+    public void fillInLeftovers(){
 	for (int y = 0; y < data.length; y ++){
 	    for (int x = 0; x < data[y].length; x ++){
 		if (data[y][x] == '_'){
@@ -119,6 +139,26 @@ public class WordGrid{
 		}
 	    }
 	}
+    }
+
+    public void loadWordsFromFile(File f, boolean fillRandomLetters){
+	try{
+	    Scanner in = new Scanner(f);
+	    ArrayList<String> wordBank = new ArrayList<String>();
+	    Random rand = new Random();
+
+	    while (in.hasNext()){
+		wordBank.add(in.next());
+	    }
+	    fillPuzzle(wordBank);
+	    if (fillRandomLetters){
+		fillInLeftovers();
+	    }
+
+	}catch(FileNotFoundException e){
+	    System.out.println("File does not exist");
+	}
+
     }
    
 }
