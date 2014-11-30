@@ -23,6 +23,10 @@ public class WordGrid{
 	this(10, 10);
     }
     
+    public void setSeed(long seed){
+	rand.setSeed(seed);
+    }
+
     /**
      *Creates the proper formatting for a WordGrid.
      *@return a String with each each character separated by spaces
@@ -120,15 +124,15 @@ public class WordGrid{
        
 	for (int x = 0; x < words.size(); x ++){
 	    String word = words.remove(rand.nextInt(words.size()));
-		int attempts = 10;
-		do{
-		    if (addWordRandomly(word)){
-			attempts = 0;
-		    }else{
-			attempts -= 1;
-		    }
-		}while(attempts > 0);
-	    }
+	    int attempts = 10;
+	    do{
+		if (addWordRandomly(word)){
+		    attempts = 0;
+		}else{
+		    attempts -= 1;
+		}
+	    }while(attempts > 0);
+	}
     }
 
     public void fillInLeftovers(){
@@ -141,8 +145,9 @@ public class WordGrid{
 	}
     }
 
-    public void loadWordsFromFile(File f, boolean fillRandomLetters){
+    public void loadWordsFromFile(String filename, boolean fillRandomLetters){
 	try{
+	    File f = new File(filename);
 	    Scanner in = new Scanner(f);
 	    ArrayList<String> wordBank = new ArrayList<String>();
 	    Random rand = new Random();
