@@ -36,7 +36,8 @@ public class Driver{
 	    w.setSeed(Long.valueOf(args[2]));
 	}
 	w.loadWordsFromFile("words.txt", fillRandomLetters);
-	System.out.println("Find these words: \n");
+	System.out.println("Find these words: \n" + w.wordsInPuzzle());
+	System.out.println();
 	System.out.println(w);	
 	
     }

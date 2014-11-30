@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class WordGrid{
     private char[][] data;
-    public ArrayList<String> wordsToFind;
+    private ArrayList<String> wordsToFind = new ArrayList<String>();
     Random rand = new Random();
     
     /**
@@ -103,14 +103,14 @@ public class WordGrid{
      *@return true when the word is added successfully, or false if not.
      */
 
-    public boolean addWord(String word, int row, int col, int x, int y){
+    private boolean addWord(String word, int row, int col, int x, int y){
         if (wordFits(word, row, col, x, y)){
 	    for (int n = 0; n < word.length(); n ++){
 		data[row][col] = word.charAt(n);
 		row += y;
 		col += x;
 	    }
-	    // wordsToFind.add(word);
+	    wordsToFind.add(word);
 	    return true;
 	}else{
 	    return false;
@@ -122,7 +122,7 @@ public class WordGrid{
      *@param word is the word to be added.
      *@return true when the word is added successfully, or false if not.
      */
-    public boolean addWordRandomly(String word){
+    private boolean addWordRandomly(String word){
 	int row = rand.nextInt(data.length);
 	int col = rand.nextInt(data[0].length);
         int x  = rand.nextInt(3) - 1;
@@ -134,7 +134,7 @@ public class WordGrid{
      *Attempts to add as many words from a given ArrayList of Strings as possible, in random order.
      *@param words is an ArrayList of potential words to be added to the puzzle.
      */    
-    public void fillPuzzle(ArrayList<String> words){
+    private void fillPuzzle(ArrayList<String> words){
 	for (int x = 0; x < words.size(); x ++){
 	    String word = words.remove(rand.nextInt(words.size()));
 	    int attempts = 100;
@@ -151,7 +151,7 @@ public class WordGrid{
     /**
      *Replaces any remaining underscores with random letters.
      */
-    public void fillInLeftovers(){
+    private void fillInLeftovers(){
 	for (int y = 0; y < data.length; y ++){
 	    for (int x = 0; x < data[y].length; x ++){
 		if (data[y][x] == '_'){
@@ -186,6 +186,17 @@ public class WordGrid{
 	    System.out.println("File does not exist");
 	}
 
+    }
+
+    public String wordsInPuzzle(){
+	String words = "";
+	for (int x = 0; x < wordsToFind.size(); x ++){
+	    words += "\t" + wordsToFind.get(x) + "\t";
+	    if ((x + 1) % 3 == 0){
+		words += "\n";
+	    }
+	}
+	return words;
     }
    
 }
