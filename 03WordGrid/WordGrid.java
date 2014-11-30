@@ -191,9 +191,9 @@ public class WordGrid{
     public String wordsInPuzzle(){
 	String words = "";
 	for (int x = 0; x < wordsToFind.size(); x ++){
-	    words += "\t" + wordsToFind.get(x) + "\t";
-	    if ((x + 1) % 3 == 0){
-		words += "\n";
+	    words += " " + wordsToFind.get(x) + ", ";
+	    if ((x + 1) % 5 == 0){
+		words += "\n\n";
 	    }
 	}
 	return words;
