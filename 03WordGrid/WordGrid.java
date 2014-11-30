@@ -23,6 +23,12 @@ public class WordGrid{
 	this(10, 10);
     }
     
+    /**
+     *Sets the long seed for the Random used throughout the class.
+     * Should be called before creating a puzzle, if you want the puzzle 
+     * to be reproduceable.
+     *@param seed is a long seed.
+     */
     public void setSeed(long seed){
 	rand.setSeed(seed);
     }
@@ -94,8 +100,7 @@ public class WordGrid{
      *@param col is the horizontal location of the beginning of the word.
      *@param x is an int from [-1, 1] that indicates the horizontal direction of the next letter in the word
      *@param y is an int from [-1,1] that indicates the vertical direction of the next letter in the word
-     *@return true when the word is added successfully, or false when the word
-     *doesn't fit or overlaps letters that don't match.
+     *@return true when the word is added successfully, or false if not.
      */
 
     public boolean addWord(String word, int row, int col, int x, int y){
@@ -112,6 +117,11 @@ public class WordGrid{
 	}
     }
 
+    /**
+     *Attempts to add a word by generating random values to use in the addWord function.
+     *@param word is the word to be added.
+     *@return true when the word is added successfully, or false if not.
+     */
     public boolean addWordRandomly(String word){
 	int row = rand.nextInt(data.length);
 	int col = rand.nextInt(data[0].length);
@@ -120,11 +130,14 @@ public class WordGrid{
 	return (addWord(word, row, col, x, y));
     }
 
+    /**
+     *Attempts to add as many words from a given ArrayList of Strings as possible, in random order.
+     *@param words is an ArrayList of potential words to be added to the puzzle.
+     */    
     public void fillPuzzle(ArrayList<String> words){
-       
 	for (int x = 0; x < words.size(); x ++){
 	    String word = words.remove(rand.nextInt(words.size()));
-	    int attempts = 10;
+	    int attempts = 100;
 	    do{
 		if (addWordRandomly(word)){
 		    attempts = 0;
@@ -135,6 +148,9 @@ public class WordGrid{
 	}
     }
 
+    /**
+     *Replaces any remaining underscores with random letters.
+     */
     public void fillInLeftovers(){
 	for (int y = 0; y < data.length; y ++){
 	    for (int x = 0; x < data[y].length; x ++){
@@ -145,6 +161,12 @@ public class WordGrid{
 	}
     }
 
+    /**
+     *Scans the words in a given file to create an ArrayList of Stings,
+     *then attempts to fill in the puzzle with these words.
+     *@param filename is the location of the file with the desired words in it.
+     *@param fillRandomLetters is a boolean flag that decides if an answer key should be provided.
+     */
     public void loadWordsFromFile(String filename, boolean fillRandomLetters){
 	try{
 	    File f = new File(filename);
