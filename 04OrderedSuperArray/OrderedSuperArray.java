@@ -15,11 +15,10 @@ public class OrderedSuperArray extends SuperArray{
 	    while (i < size() && e.compareTo(A[i]) >= 0){
 		i ++;
 	    }
-	    int index = i;
-	    for (; i < size(); i ++){
-		A[i + 1] = A[i];
+	    for (int x = size(); x > i; x --){
+		A[x] = A[x - 1];
 	    }
-	    A[index] = e;
+	    A[i] = e;
 	    numElements ++;
 
 	}

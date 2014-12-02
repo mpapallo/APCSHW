@@ -13,5 +13,8 @@ public class Driver{
 	A.add(b);	
 	System.out.println(A);
 	
+	A.add(5, a);
+	System.out.println(A);
+
     }
 }
