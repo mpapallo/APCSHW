@@ -11,29 +11,29 @@ public class OrderedSuperArray extends SuperArray{
 	    resize(A.length *  2);
 	    add(e);
 	}else{
-	    if (size() == 0){
-		A[0] = e;
-	    }else{
-		int i = 0;
-		while (e.compareTo(A[i]) <= 0){
-		    i ++;
-		}
-		int index = i;
-		for (; i < size(); i ++){
-		    A[i + 1] = A[i];
-		}
-		A[i] = e;
+	    int i = 0;
+	    while (i < size() && e.compareTo(A[i]) >= 0){
+		i ++;
 	    }
+	    int index = i;
+	    for (; i < size(); i ++){
+		A[i + 1] = A[i];
+	    }
+	    A[index] = e;
+	    numElements ++;
+
 	}
     }
 
     public void add(int index, String e){
 	add(e);
     }
-    /*
-      public String set(int index, String e){
-      remove(index);
-      add(e);
-      }
-    */
+
+    public String set(int index, String e){
+	String x = get(index);
+	remove(index);
+	add(e);
+	return x;
+    }
+    
 }
