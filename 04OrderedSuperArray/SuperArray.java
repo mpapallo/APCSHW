@@ -50,7 +50,7 @@ public class SuperArray{
 		ret[i] = A[i];
 	    }
 	    ret[index] = o;
-	    for (int i = index; i < A.length; i ++){
+	    for (int i = index; i < size(); i ++){
 		ret[i+1] = A[i];
 	    }
 	    A = ret;
@@ -107,6 +107,18 @@ public class SuperArray{
     	    resize(A.length / 2);
     	}
     	return x;
+    }
+
+    public void sort(){
+	for (int i = 0; i < size(); i ++){
+	    String min = A[i];
+	    for (int x = i; x < size(); x ++){
+		if (A[x].compareTo(min) < 0){
+		    min = A[x];
+		}
+	    }
+	    add(i, min);
+	}
     }
    
 }
