@@ -110,14 +110,23 @@ public class SuperArray{
     }
 
     public void sort(){
-	for (int i = 0; i < size(); i ++){
-	    String min = A[i];
-	    for (int x = i; x < size(); x ++){
-		if (A[x].compareTo(min) < 0){
-		    min = A[x];
-		}
+	for (int i = 1; i < size(); i ++){
+	    int x = i;
+	    while (x > 0 && A[x-1].compareTo(A[x]) > 0){
+		//swap them
+		x --;
 	    }
-	    add(i, min);
+	}
+    }
+    
+    public void Isort(){
+	for (int i = 0; i < size(); i ++){
+	    String s = remove(i);
+	    int x = i - 1;
+	    while (x > 0 && s.compareTo(A[x]) < 0){
+		x --;
+	    }
+	    add(x, s);
 	}
     }
    
