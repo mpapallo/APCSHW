@@ -113,7 +113,9 @@ public class SuperArray{
 	for (int i = 1; i < size(); i ++){
 	    int x = i;
 	    while (x > 0 && A[x-1].compareTo(A[x]) > 0){
-		//swap them
+		String s = A[x];
+		set(x, A[x-1]);
+		set(x-1, s);
 		x --;
 	    }
 	}
