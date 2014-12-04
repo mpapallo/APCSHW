@@ -43,6 +43,7 @@ public class Driver{
 	System.out.println(C);
 	System.out.println();
 	C.insertionSort();
+	//C.badInsertionSort();
 	System.out.println(C);
 	
     }

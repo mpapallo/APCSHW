@@ -132,4 +132,14 @@ public class SuperArray{
 	}
     }
    
+    public void badInsertionSort(){
+        OrderedSuperArray c = new OrderedSuperArray();
+        while( this.size() > 0){ 
+            c.add(this.remove(0));
+        }
+        while(c.size() > 0){
+            this.add(c.remove(0));
+        }
+    }
+
 }
