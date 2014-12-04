@@ -109,7 +109,8 @@ public class SuperArray{
     	return x;
     }
 
-    public void sort(){
+    /*
+    public void swapSort(){
 	for (int i = 1; i < size(); i ++){
 	    int x = i;
 	    while (x > 0 && A[x-1].compareTo(A[x]) > 0){
@@ -120,7 +121,8 @@ public class SuperArray{
 	    }
 	}
     }
-    
+    */
+
     public void insertionSort(){
 	for (int i = 1; i < size(); i ++){
 	    String s = remove(i);
@@ -131,7 +133,8 @@ public class SuperArray{
 	    add(x, s);
 	}
     }
-   
+
+    /*
     public void badInsertionSort(){
         OrderedSuperArray c = new OrderedSuperArray();
         while( this.size() > 0){ 
@@ -140,6 +143,16 @@ public class SuperArray{
         while(c.size() > 0){
             this.add(c.remove(0));
         }
+    }
+    */
+
+    public int find(String target){
+	for (int i = 0; i < size(); i ++){
+	    if (A[i].equals(target)){
+		return i;
+	    }
+	}
+	return -1;
     }
 
 }
