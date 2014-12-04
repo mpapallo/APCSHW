@@ -1,0 +1,5 @@
+12/3/14
+
+1. In order to check if my insertionSort() worked properly, I used a for loop to create a Super Array of the alphabet in reverse order.
+Then I called insertionSort() on the Super Array and made sure the alphabet ended up in the correct order.
+
