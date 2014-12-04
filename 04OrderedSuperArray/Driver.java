@@ -30,7 +30,8 @@ public class Driver{
 	B.add(a);
 	System.out.println(B);
 	
-	B.sort();
+	//B.sort();
+	B.insertionSort();
 	System.out.println(B);
     }
 }

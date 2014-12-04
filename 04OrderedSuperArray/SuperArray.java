@@ -121,12 +121,12 @@ public class SuperArray{
 	}
     }
     
-    public void Isort(){
-	for (int i = 0; i < size(); i ++){
+    public void insertionSort(){
+	for (int i = 1; i < size(); i ++){
 	    String s = remove(i);
-	    int x = i - 1;
-	    while (x > 0 && s.compareTo(A[x]) < 0){
-		x --;
+	    int x = 0;
+	    while (x < i && s.compareTo(A[x]) > 0){
+		x ++;
 	    }
 	    add(x, s);
 	}
