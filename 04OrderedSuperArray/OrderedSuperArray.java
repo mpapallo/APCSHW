@@ -34,5 +34,9 @@ public class OrderedSuperArray extends SuperArray{
 	add(e);
 	return x;
     }
-    
+   
+    public int find(String target){
+	
+    }
+
 }
