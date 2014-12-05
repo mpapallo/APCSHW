@@ -32,19 +32,31 @@ public class Driver{
 	System.out.println(B);
 	*/
 
-	SuperArray C = new SuperArray();
+	if (args.length > 0){
+	    SuperArray C = new SuperArray();
 
-	for (int i = 25; i >= 0; i --){
-	    C.add("" + (char)('a' + i));
-	}
-	for (int i = 25; i >= 0; i --){
-	    C.add("" + (char)('A' + i));
-	}
-	System.out.println(C);
-	System.out.println();
-	C.insertionSort();
-	//C.badInsertionSort();
-	System.out.println(C);
+	    for (int n = 0; n < 100; n ++){
+		C.add("" + n);
+	    }
+	    /*
+	      for (int i = 25; i >= 0; i --){
+	      C.add("" + (char)('a' + i));
+	      }
+	      for (int i = 25; i >= 0; i --){
+	      C.add("" + (char)('A' + i));
+	      }
+	    */
+	    System.out.println(C);
+	    System.out.println();
+	    if (args[0].equals("0")){
+		C.insertionSort();
+		System.out.println(C);
+	    }else if (args[0].equals("1")){
+		C.selectionSort();
+		System.out.println(C);
+	    }else if (args[0].equals("2")){
 
+	    }
+	}
     }
 }
