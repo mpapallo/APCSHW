@@ -109,27 +109,31 @@ public class SuperArray{
     	return x;
     }
 
-    
     public void swapSort(){
-	for (int i = 1; i < size(); i ++){
-	    int x = i;
-	    while (x > 0 && A[x-1].compareTo(A[x]) > 0){
-		String s = A[x];
-		set(x, A[x-1]);
-		set(x-1, s);
-		x --;
+	if (size() > 1){
+	    for (int i = 1; i < size(); i ++){
+		int x = i;
+		while (x > 0 && A[x-1].compareTo(A[x]) > 0){
+		    String s = A[x];
+		    set(x, A[x-1]);
+		    set(x-1, s);
+		    x --;
+		}
 	    }
 	}
     }
 
     public void insertionSort(){
-	for (int i = 1; i < size(); i ++){
-	    String s = remove(i);
-	    int x = 0;
-	    while (x < i && s.compareTo(get(x)) > 0){
-		x ++;
+	if (size() > 1){
+	    for (int i = 1; i < size(); i ++){
+		String s = get(i);
+		int x = 0;
+		while (x < i && s.compareTo(A[x]) > 0){
+		    x ++;
+		}
+		add(x, s);
+		remove(i + 1);
 	    }
-	    add(x, s);
 	}
     }
 
