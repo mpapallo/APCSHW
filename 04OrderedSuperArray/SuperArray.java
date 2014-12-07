@@ -126,7 +126,7 @@ public class SuperArray{
     public void insertionSort(){
 	if (size() > 1){
 	    for (int i = 1; i < size(); i ++){
-		String s = get(i);
+		String s = A[i];
 		int x = 0;
 		while (x < i && s.compareTo(A[x]) > 0){
 		    x ++;
@@ -139,10 +139,22 @@ public class SuperArray{
 
     public void selectionSort(){
 	for (int i = 0; i < size(); i ++){
-	    String min = A[i];
-	    int x = i;
-	    
+	    int x = getMinIndex(i);
+	    add(i, A[x]);
+	    remove(x + 1);
 	}
+    }
+
+    public int getMinIndex(int start){
+	String min = A[start];
+	int i = start;
+	for (int x = start; x < size(); x ++){
+	    if (A[x].compareTo(min) < 0){
+		min = A[x];
+		i = x;
+	    }
+	}
+        return i;
     }
 
     public int find(String target){
