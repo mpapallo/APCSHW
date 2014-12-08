@@ -1,12 +1,12 @@
 public class Driver{
     public static void main(String[]args){
-
+	
 	if (args.length > 0){
 
 	    SuperArray C = new SuperArray();
 	    SuperArray D = new SuperArray();
 	    
-	    for (int n = 0; n < 100; n ++){
+	    for (int n = 0; n < 500; n ++){
 		C.add("" + n);
 	    }
 	    
@@ -44,5 +44,13 @@ public class Driver{
 	    }
 	    
 	}
+	
+	OrderedSuperArray A = new OrderedSuperArray();
+	for (int i = 25; i >= 0; i --){
+		A.add("" + (char)('a' + i));
+	}
+	A.add("b");
+	A.add("b");
+	System.out.println(A.find("b"));
     }
 }
