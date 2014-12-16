@@ -1,7 +1,7 @@
 public class Sorts{
     
     public static void bubbleSort(int[] A){
-	for (int i = 0 ; i < A.length; i ++){
+	for (int i = 1 ; i < A.length; i ++){
 	    for (int x = 0; x < A.length - i; x ++){
 		if (A[x] > A[x+1]){
 		    int p = A[x];
