@@ -12,18 +12,12 @@ public class Sorts{
 	}
     }
 
-    public static void swap(int[]A){
-	if (A.length > 1){
-	    for (int i = 1; i < A.length; i ++){
-		int x = i;
-		while (x > 0 && A[x-1] > A[x]){
-		    int s = A[x];
-		    A[x] = A[x-1];
-		    A[x-1] = s;
-		    x --;
-		}
-	    }
-	}
+    public static void insertion(int[] A){
+	
+    }
+
+    public static void selection(int[] A){
+	
     }
 
     public static void main(String[]args){
