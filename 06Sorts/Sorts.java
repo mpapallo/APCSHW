@@ -1,5 +1,13 @@
+import java.util.*;
 public class Sorts{
     
+    public static String name(){
+	return "Papallo,Michaela";
+    }
+    public static int period(){
+	return 6;
+    }
+
     public static void bubble(int[] A){
 	for (int i = 1 ; i < A.length; i ++){
 	    for (int x = 0; x < A.length - i; x ++){
@@ -43,6 +51,15 @@ public class Sorts{
 	    }
 	}
         return i;
+    }
+
+    public static void radix(int[] A){
+	ArrayList<ArrayList> buckets = new ArrayList<ArrayList>(10);
+	for (int i = 0; i < buckets.size(); i ++){
+	    buckets.set(i, new ArrayList());
+	}
+	
+	
     }
 
 }

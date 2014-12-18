@@ -4,7 +4,7 @@ public class Driver{
         long startTime, endTime;
 	int[] orig;
 
-        orig = new int[500000];
+        orig = new int[100000];
 	for (int i = orig.length; i > 0; i --){
 	    orig[orig.length - i] = i;
 	}
