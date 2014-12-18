@@ -1,0 +1,9 @@
+public class Driver{
+    public static void main(String[]args){
+	int[] orig = new int[101];
+	for (int i = orig.length; i > 0; i --){
+	    orig[orig.length - i] = i;
+	}
+
+    }
+}
