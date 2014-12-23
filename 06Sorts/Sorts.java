@@ -74,9 +74,14 @@ public class Sorts{
 		Integer z = new Integer(A[i]);
 		buckets.get(in).add(z);
 	    }
+	    //
+	    for (int i = 0; i < 10; i ++){
+		for (int x = 0; x < buckets.get(i).size(); x ++){
+		    //copy into A
+		}
+	    }
 	    exp *= 10;
 	}
-	
 	
     }
 
