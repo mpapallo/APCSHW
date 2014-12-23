@@ -54,9 +54,27 @@ public class Sorts{
     }
 
     public static void radix(int[] A){
-	ArrayList<ArrayList> buckets = new ArrayList<ArrayList>(10);
-	for (int i = 0; i < buckets.size(); i ++){
-	    buckets.set(i, new ArrayList());
+	int max = A[0];
+	for (int i = 1; i < A.length; i ++){
+	    if (A[i] > max){
+		max = A[i];
+	    }
+	}
+
+	ArrayList<ArrayList<Integer>> buckets = new ArrayList<ArrayList<Integer>>(10);
+	for (int i = 0; i < 10; i ++){
+	    buckets.set(i, new ArrayList<Integer>());
+	}
+	
+	int exp = 1;
+
+	while(max / exp > 0){
+	    for (int i = 0; i < A.length; i ++){
+		int in = ((A[i] / exp) % 10);
+		Integer z = new Integer(A[i]);
+		buckets.get(in).add(z);
+	    }
+	    exp *= 10;
 	}
 	
 	
