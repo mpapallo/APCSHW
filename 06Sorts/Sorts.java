@@ -61,9 +61,9 @@ public class Sorts{
 	    }
 	}
 
-	ArrayList<ArrayList<Integer>> buckets = new ArrayList<ArrayList<Integer>>(10);
+	ArrayList<ArrayList<Integer>> buckets = new ArrayList<ArrayList<Integer>>();
 	for (int i = 0; i < 10; i ++){
-	    buckets.set(i, new ArrayList<Integer>());
+	    buckets.add(new ArrayList<Integer>());
 	}
 	
 	int exp = 1;
@@ -74,11 +74,15 @@ public class Sorts{
 		Integer z = new Integer(A[i]);
 		buckets.get(in).add(z);
 	    }
-	    //
+	    
+	    int ctr = 0;
 	    for (int i = 0; i < 10; i ++){
 		for (int x = 0; x < buckets.get(i).size(); x ++){
 		    //copy into A
+		    A[ctr] = buckets.get(i).get(x);
+		    ctr ++;
 		}
+		buckets.get(i).clear();
 	    }
 	    exp *= 10;
 	}

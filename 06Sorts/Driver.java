@@ -3,12 +3,12 @@ public class Driver{
     public static void main(String[]args){
         long startTime, endTime;
 	int[] orig;
-
+	
         orig = new int[100000];
 	for (int i = orig.length; i > 0; i --){
 	    orig[orig.length - i] = i;
 	}
-
+	
 	int[] copy1 = Arrays.copyOf(orig, orig.length);
 	System.out.println("Bubble:");
 	startTime = System.currentTimeMillis();
@@ -31,9 +31,16 @@ public class Driver{
 	System.out.println(endTime - startTime);
 
 	int[] copy4 = Arrays.copyOf(orig, orig.length);
+	System.out.println("Radix:");
+	startTime = System.currentTimeMillis();
+	Sorts.radix(copy4);
+	endTime = System.currentTimeMillis();
+	System.out.println(endTime - startTime);
+
+	int[] copy5 = Arrays.copyOf(orig, orig.length);
 	System.out.println("Arrays.sort:");
 	startTime = System.currentTimeMillis();
-        Arrays.sort(copy4);
+        Arrays.sort(copy5);
 	endTime = System.currentTimeMillis();
 	System.out.println(endTime - startTime);
 	
